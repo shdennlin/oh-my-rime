@@ -1,0 +1,18 @@
+patch: 
+  switches:
+    - name: ascii_mode
+      reset: 0
+      states: [ 中文, 英文 ]
+    - name: emoji_suggestion
+      reset: 1
+      states: [ "😣️","😁️"]
+    - name: full_shape
+      states: [ 半角, 全角 ]
+    - name: transcription
+      reset: 1
+      states: [ 简体 , 繁体 ]
+    - name: ascii_punct
+      reset: 1
+      states: [ 。，, ．， ]
+    - name: chaifen        # 拆字滤镜
+      states: [ 🙈, 🐵 ]     # 快捷键 「Control+Shift+C」
