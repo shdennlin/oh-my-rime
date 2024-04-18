@@ -1,24 +1,4 @@
 patch: 
-  switches:
-    - name: ascii_mode
-      reset: 0
-      states: [ 中文, 英文 ]
-    - name: emoji_suggestion
-      reset: 1
-      states: [ "😣️","😁️"]
-    - name: full_shape
-      states: [ 半角, 全角 ]
-    - name: transcription
-      reset: 1
-      states: [ 简体 , 繁体 ]
-    - name: zh_tw
-      reset: 1
-      states: [ 港, 臺 ]
-    - name: ascii_punct
-      reset: 1
-      states: [ 。，, ．， ]
-
-patch: 
   engine/filters:
     - lua_filter@*corrector_filter            # 错音错字提示
     - lua_filter@*autocap_filter              # 英文自动大写

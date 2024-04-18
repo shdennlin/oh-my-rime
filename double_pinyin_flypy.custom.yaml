@@ -1,4 +1,15 @@
 patch: 
+  engine/filters:
+    - lua_filter@*corrector_filter            # 错音错字提示
+    - lua_filter@*autocap_filter              # 英文自动大写
+    - simplifier@emoji_suggestion
+    - simplifier@transcription_cc
+    - simplifier@zh_tw  # 增加這行
+    - simplifier@chaifen_cc                   # 鹤形拆字辅助滤镜
+    - lua_filter@*auxCode_filter@flypy_full   # 小鹤双拼辅码(音形)
+    - lua_filter@*reduce_english_filter       # 降低部分英语单词在候选项的位置
+    - uniquifier                              # 去重
+
   switches:
     - name: ascii_mode
       reset: 0
@@ -11,8 +22,19 @@ patch:
     - name: transcription
       reset: 1
       states: [ 简体 , 繁体 ]
+    - name: zh_tw
+      reset: 1
+      states: [ 港, 臺 ]
     - name: ascii_punct
       reset: 1
       states: [ 。，, ．， ]
     - name: chaifen        # 拆字滤镜
       states: [ 🙈, 🐵 ]     # 快捷键 「Control+Shift+C」
+
+  traditionalize/opencc_config: s2tw.json
+
+  zh_tw:
+    option_name: zh_tw
+    opencc_config: t2tw.json
+    tips: none
+    excluded_types: [ reverse_lookup ]
